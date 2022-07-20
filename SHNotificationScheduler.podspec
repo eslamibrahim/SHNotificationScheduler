@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SHNotificationScheduler"
-  spec.version      = "v1.0.0"
+  spec.version      = "1.0.0"
   spec.summary      = "SHNotificationScheduler."
 
   # This description is used to generate tags and improve search results.
@@ -82,7 +82,7 @@ This CocoaPods library helps you perform NotificationScheduler.
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/eslamibrahim/SHNotificationScheduler.git" , :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/eslamibrahim/SHNotificationScheduler.git" , :tag => "v#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
