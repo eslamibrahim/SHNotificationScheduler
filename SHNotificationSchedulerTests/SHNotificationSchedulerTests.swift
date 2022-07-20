@@ -32,5 +32,14 @@ class SHNotificationSchedulerTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    
+    func testAdd() {
+        XCTAssertEqual(2, 2)
+    }
+    
+    func testSub() {
+        XCTAssertEqual(2, 1)
+    }
 
 }
