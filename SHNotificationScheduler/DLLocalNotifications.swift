@@ -79,7 +79,6 @@ public class DLNotificationScheduler {
     public func getScheduledNotification(with identifier: String, handler:@escaping (_ request:UNNotificationRequest?)-> Void) {
         
         
-        var foundNotification:UNNotificationRequest? = nil
         UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { (requests) in
             
             for request  in  requests {
@@ -181,14 +180,14 @@ public class DLNotificationScheduler {
     
     public func scheduleNotification ( notification: DLNotification) {
         
-        queueNotification(notification: notification)
+       _ = queueNotification(notification: notification)
         
     }
     
     public func scheduleAllNotifications () {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         var queue = DLQueue.queue.notificationsQueue().filter { notification in
-            notification.fireDate!.timeIntervalSince1970 > Date().timeIntervalSince1970 || notification.repeatInterval != .none
+            notification.fireDate!.timeIntervalSince1970 > Date().timeIntervalSince1970 || notification.repeatInterval != RepeatingInterval.none
         }.sorted(by: {
             $0.fireDate!.timeIntervalSince1970 < $1.fireDate!.timeIntervalSince1970
         })
@@ -196,7 +195,7 @@ public class DLNotificationScheduler {
         for _ in queue {
             if count < min(DLNotificationScheduler.maximumScheduledNotifications, MAX_ALLOWED_NOTIFICATIONS) {
                 let popped = queue.removeFirst()
-                scheduleNotificationInternal(notification: popped)
+               _ = scheduleNotificationInternal(notification: popped)
                 count += 1
             } else { break }
             
@@ -221,18 +220,18 @@ public class DLNotificationScheduler {
             } else {
                 
                 
-                if let repeatInterval = notification.repeatInterval as? RepeatingInterval , let dateComponents = notification.fromDateComponents as? DateComponents {
+                if let repeatInterval = notification.repeatInterval{
                     // If RepeatingInterval Notification
-                    trigger = UNCalendarNotificationTrigger(dateMatching: convertToNotificationDateComponent(notification: notification, repeatInterval: notification.repeatInterval), repeats: notification.repeats)
+                    trigger = UNCalendarNotificationTrigger(dateMatching: convertToNotificationDateComponent(notification: notification, repeatInterval: repeatInterval), repeats: notification.repeats)
                 }
                 // If Date based notification
                 else if let fireDate = notification.fireDate{
                     //trigger = UNTimeIntervalNotificationTrigger.init(timeInterval:  fireDate.timeIntervalSince(Date()), repeats: notification.repeats)
-                    
-                    if (notification.repeatInterval == .none) {
+                    if let repeatInterval = notification.repeatInterval , (repeatInterval == .none) {
                         trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second ], from: fireDate) , repeats: notification.repeats)
                     }
                 }
+                
                 /*
                  if (notification.repeatInterval == .minute) {
                  trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: (TimeInterval(60)), repeats: notification.repeats)
@@ -316,13 +315,13 @@ public class DLNotificationScheduler {
             
             let identifier = identifier + String(i + 1)
             print(identifier)
-            var notification = DLNotification(identifier: identifier, alertTitle: alertTitle, alertBody: alertBody, fromDateComponents: dateComponents, repeatInterval: repeats)
+            let notification = DLNotification(identifier: identifier, alertTitle: alertTitle, alertBody: alertBody, fromDateComponents: dateComponents, repeatInterval: repeats)
             notification.category = category
             notification.soundName = sound
             notification.userInfo = userInfo
             notification.fireDate = nextDate
             print("Dates from notifications : " + notification.fromDateComponents!.debugDescription)
-            self.queueNotification(notification: notification)
+           _ = self.queueNotification(notification: notification)
             nextDate = nextDate.addingTimeInterval(interval)
 
         }
@@ -339,8 +338,7 @@ public class DLNotificationScheduler {
         for i in 0..<intervalDifference + 1 {
             
             // Next notification Date
-            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second ], from: nextDate)
-            
+          
             let identifier = identifier + String(i + 1)
             print(identifier)
             self.cancelNotification(identifier: identifier)

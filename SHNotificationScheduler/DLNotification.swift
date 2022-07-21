@@ -15,7 +15,7 @@ public class DLNotification : Codable {
     internal var localNotificationRequest: UNNotificationRequest?
     
     // Holds the repeat interval of the notification with Enum Type Repeats
-    var repeatInterval: RepeatingInterval = .none
+    var repeatInterval: RepeatingInterval? = RepeatingInterval.none
     
     // Holds the body of the message of the notification
     @NullCodable  var alertBody: String?
@@ -108,7 +108,7 @@ public class DLNotification : Codable {
         self.alertBody = alertBody
         self.alertTitle = alertTitle
         self.fireDate = date
-        self.repeatInterval = .none
+        self.repeatInterval = RepeatingInterval.none
         self.identifier = identifier
         self.repeats = false
         
@@ -152,7 +152,7 @@ public class DLNotification : Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
 
 
-        try container.encode(repeatInterval.rawValue, forKey: CodingKeys.repeatInterval)
+        try container.encode(repeatInterval?.rawValue, forKey: CodingKeys.repeatInterval)
         try container.encode(alertTitle, forKey: .alertTitle)
         try container.encode(alertBody, forKey: .alertBody)
         try container.encode(soundName, forKey: .soundName)
