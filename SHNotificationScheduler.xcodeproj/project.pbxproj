@@ -11,6 +11,12 @@
 		A608C2392887F21E00FB70FC /* SHNotificationScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A608C22E2887F21E00FB70FC /* SHNotificationScheduler.framework */; };
 		A608C23E2887F21E00FB70FC /* SHNotificationSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608C23D2887F21E00FB70FC /* SHNotificationSchedulerTests.swift */; };
 		A608C23F2887F21E00FB70FC /* SHNotificationScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = A608C2312887F21E00FB70FC /* SHNotificationScheduler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A61867552889328600A6513C /* DLLocalNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = A61867502889328500A6513C /* DLLocalNotifications.h */; };
+		A61867562889328600A6513C /* DLLocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61867512889328500A6513C /* DLLocalNotifications.swift */; };
+		A61867572889328600A6513C /* DLCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61867522889328500A6513C /* DLCategory.swift */; };
+		A61867582889328600A6513C /* DLNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61867532889328600A6513C /* DLNotification.swift */; };
+		A61867592889328600A6513C /* DLQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61867542889328600A6513C /* DLQueue.swift */; };
+		A618675B288932BF00A6513C /* NullCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A618675A288932BF00A6513C /* NullCodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +35,12 @@
 		A608C2322887F21E00FB70FC /* SHNotificationScheduler.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SHNotificationScheduler.docc; sourceTree = "<group>"; };
 		A608C2382887F21E00FB70FC /* SHNotificationSchedulerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHNotificationSchedulerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A608C23D2887F21E00FB70FC /* SHNotificationSchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHNotificationSchedulerTests.swift; sourceTree = "<group>"; };
+		A61867502889328500A6513C /* DLLocalNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLocalNotifications.h; sourceTree = "<group>"; };
+		A61867512889328500A6513C /* DLLocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLLocalNotifications.swift; sourceTree = "<group>"; };
+		A61867522889328500A6513C /* DLCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLCategory.swift; sourceTree = "<group>"; };
+		A61867532889328600A6513C /* DLNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLNotification.swift; sourceTree = "<group>"; };
+		A61867542889328600A6513C /* DLQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLQueue.swift; sourceTree = "<group>"; };
+		A618675A288932BF00A6513C /* NullCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullCodable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +84,12 @@
 			isa = PBXGroup;
 			children = (
 				A608C2312887F21E00FB70FC /* SHNotificationScheduler.h */,
+				A61867522889328500A6513C /* DLCategory.swift */,
+				A61867502889328500A6513C /* DLLocalNotifications.h */,
+				A61867512889328500A6513C /* DLLocalNotifications.swift */,
+				A61867532889328600A6513C /* DLNotification.swift */,
+				A61867542889328600A6513C /* DLQueue.swift */,
+				A618675A288932BF00A6513C /* NullCodable.swift */,
 				A608C2322887F21E00FB70FC /* SHNotificationScheduler.docc */,
 			);
 			path = SHNotificationScheduler;
@@ -93,6 +111,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A608C23F2887F21E00FB70FC /* SHNotificationScheduler.h in Headers */,
+				A61867552889328600A6513C /* DLLocalNotifications.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +213,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A61867562889328600A6513C /* DLLocalNotifications.swift in Sources */,
 				A608C2332887F21E00FB70FC /* SHNotificationScheduler.docc in Sources */,
+				A61867582889328600A6513C /* DLNotification.swift in Sources */,
+				A61867572889328600A6513C /* DLCategory.swift in Sources */,
+				A61867592889328600A6513C /* DLQueue.swift in Sources */,
+				A618675B288932BF00A6513C /* NullCodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +420,7 @@
 		A608C2462887F21E00FB70FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q6V8Q8744Y;
@@ -412,6 +437,7 @@
 		A608C2472887F21E00FB70FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q6V8Q8744Y;
