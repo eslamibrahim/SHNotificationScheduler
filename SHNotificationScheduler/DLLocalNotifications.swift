@@ -23,7 +23,7 @@ public class DLNotificationScheduler {
         
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         DLQueue.queue.clear()
-        saveQueue()
+        _ = saveQueue()
         
     }
     
@@ -63,7 +63,7 @@ public class DLNotificationScheduler {
             }
             i += 1
         }
-        saveQueue()
+       _ = saveQueue()
     }
     
     public func getScheduledNotifications(handler:@escaping (_ request:[UNNotificationRequest]?)-> Void) {
@@ -201,7 +201,7 @@ public class DLNotificationScheduler {
             } else { break }
             
         }
-        saveQueue()
+         _ = saveQueue()
     }
     var count = 0
     // Refactored for backwards compatability
